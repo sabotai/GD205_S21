@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GridMovement : MonoBehaviour
 {
-
+    //new code!!!!
 	//we assigned these to be equivalent in each direction, so fwd = (x = 0, y = 0, z = 2) and bwd = (x = 0, y = 0, z = -2)
 	public Vector3 fwd;
 
