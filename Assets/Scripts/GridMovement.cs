@@ -7,9 +7,11 @@ public class GridMovement : MonoBehaviour
     //new code!!!!
 	//we assigned these to be equivalent in each direction, so fwd = (x = 0, y = 0, z = 2) and bwd = (x = 0, y = 0, z = -2)
 	public Vector3 fwd, bwd, lft, rgt, up, dwn;
-    public Transform hazard, key;
+    public Transform hazard, key, door, newRoom, oldRoom;
     Vector3 startPos;
     public bool hasKey;
+    public AudioSource speaker;
+    public AudioClip hazardClip;
 
     // Start is called before the first frame update
     void Start() //like setup
@@ -51,10 +53,27 @@ public class GridMovement : MonoBehaviour
 
         if (hazard.position == transform.position) {
             transform.position = startPos;
+            speaker.PlayOneShot(hazardClip, .7f);
         }
         if (key.position == transform.position) {
             hasKey = true;
+            key.gameObject.SetActive(false);
+        }
+        if (door.position == transform.position && hasKey){
+            newRoom.gameObject.SetActive(true);
+            oldRoom.gameObject.SetActive(false);
+            door.gameObject.SetActive(false);
+
+        }
+
+
+        for (int i = 0; i < oldRoom.childCount; i++){
+            if (transform.position == oldRoom.GetChild(i).position){
+                oldRoom.GetChild(i).gameObject.GetComponent<Renderer>().material.color += new Color(0.01f, 0.01f, 0.01f, 1f);
+            }
         }
 
     }
 }
+
+
