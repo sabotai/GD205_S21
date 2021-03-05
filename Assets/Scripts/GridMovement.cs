@@ -7,7 +7,8 @@ public class GridMovement : MonoBehaviour
     //new code!!!!
 	//we assigned these to be equivalent in each direction, so fwd = (x = 0, y = 0, z = 2) and bwd = (x = 0, y = 0, z = -2)
 	public Vector3 fwd, bwd, lft, rgt, up, dwn;
-    public Transform hazard, key, door, newRoom, oldRoom;
+    public Transform[] hazard;
+    public Transform key, door, newRoom, oldRoom;
     Vector3 startPos;
     public bool hasKey;
     public AudioSource speaker;
@@ -51,10 +52,17 @@ public class GridMovement : MonoBehaviour
             transform.position += up; 
         }
 
-        if (hazard.position == transform.position) {
-            transform.position = startPos;
-            speaker.PlayOneShot(hazardClip, .7f);
+
+        for (int i = 0; i < hazard.Length; i++){
+            if (hazard[i].position == transform.position) {
+                transform.position = startPos;
+                speaker.PlayOneShot(hazardClip, .7f);
+            }
         }
+        //if (hazard.position == transform.position) {
+        //    transform.position = startPos;
+        //    speaker.PlayOneShot(hazardClip, .7f);
+        //}
         if (key.position == transform.position) {
             hasKey = true;
             key.gameObject.SetActive(false);
