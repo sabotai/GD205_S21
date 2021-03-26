@@ -39,8 +39,8 @@ public class Laser : MonoBehaviour
      		//the thing we hit must have a rigidbody
      		//and the transform of the thing we hit must not be the same (!=) as the transform this script is attached to
      		if (hit.rigidbody && hit.transform != transform && Input.GetMouseButton(0)){
-     			Destroy(hit.transform.gameObject);
      			
+
      			//this code executes if the above conditions are true
      			//if so, access the rigidbody of the thing we hit and run the AddExplosionForce method
      			//see the documentation page for what each parameter is
@@ -52,7 +52,7 @@ public class Laser : MonoBehaviour
 
      			hit.transform.gameObject.GetComponent<Renderer>().material.color = Color.red;
      			//hit.transform.gameObject.GetComponent<Renderer>().material.color -= new Color(0f, 0.1f, 0.1f, 0f);
-
+     			//Destroy(hit.transform.gameObject);
      		}
      	}  
     }
