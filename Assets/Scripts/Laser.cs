@@ -8,6 +8,8 @@ public class Laser : MonoBehaviour
 
 	int howManyThingsHit = 0;
 
+    public GameObject spawnItem;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,6 +36,10 @@ public class Laser : MonoBehaviour
 
      		//demonstration code for modifying scale since that was part of last week's homework
      		//hit.transform.localScale += new Vector3(1f, 1f, 1f);
+
+            if (Input.GetMouseButtonDown(1)){
+                Instantiate(spawnItem, hit.point, Quaternion.identity);
+            }
 
      		//there are three conditions here that must be true
      		//the thing we hit must have a rigidbody

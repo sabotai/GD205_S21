@@ -15,7 +15,7 @@ public class SaucerThrust : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (Input.GetKey(KeyCode.W)){ //if the W key is being pressed at this moment
         	rb.AddForce(new Vector3(0f,0f,1f) * thrustAmt); //addforce in the direction forward (1 on the z axis)

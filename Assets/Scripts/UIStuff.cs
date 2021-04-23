@@ -9,6 +9,8 @@ public class UIStuff : MonoBehaviour
 
 	public Text coinUI; //we assign this to be the UI text gameobject
 	public int coinCount; //an int to keep track of how many coins the player has picked up
+    public Text timer;
+    public float timerAmount;
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +25,12 @@ public class UIStuff : MonoBehaviour
         //modify the text property of the Text object
         //set it to how many coins have been collected followed by " coins"
        coinUI.text = coinCount + " coins"; 
+
+       timer.text = " " + (timerAmount - (int)Time.timeSinceLevelLoad);
+
+       if (Time.timeSinceLevelLoad > timerAmount){
+            ReloadScene();
+       }
     }
 
     //OnTriggerEnter will run anytime this gameobject collides with another collider marked as a trigger
